@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Filtre</title>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtr">
+
+        <p>Numele meu este {{ fName | myFilter }} {{ lName | uppercase }}</p>
+        
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtr', function ($scope) {
+            $scope.fName = "adrian",
+            $scope.lName = "adiaconitei"
+           
+        });
+        app.filter('myFilter',function(){
+            return function(input)
+            {
+                
+                return (angular.isString(input) && input.length > 0) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : input;
+ 
+            }
+        });
+    </script>
+</body>
+
+</html>

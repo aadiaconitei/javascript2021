@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Servicii</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtr">
+
+        <p>Acest titlul se va schimba automat dupa 5 secunde:</p>
+
+        <h1>{{myTitle}}</h1>
+
+        <p>Adresa URL este {{ myUrl }}</p>
+        <p>Ceas:</p>
+        <h4>{{myTime}}</h4>
+        <button ng-click="DisplayPrompt()">Introduceti Numele</button>
+
+        <p>Transforma numarul din baza 10 in baza 16:</p>
+        <button ng-click="TransformaPrompt()">Introduceti Numele</button>
+        <h4>{{ hex }} </h4>
+    </div>
+    <script>
+
+        var app = angular.module('myApp', []);
+        // servicul personalizat
+        app.service('hexa', function () {
+            this.myFunc = function (x) {
+                return x.toString(16);
+            }
+        });
+
+        
+        app.controller('myCtr', function ($scope, $timeout, $location, $interval, $window, $log, hexa) {
+            //$timeout
+            $scope.myTitle = "Salut sunt un Servicul Angular!";
+            $timeout(function () {
+                $scope.myTitle = "Serviciu $timeout.";
+            }, 5000);
+            //$location
+            $scope.myUrl = $location.absUrl();
+
+            //$interval
+            $scope.myTime = new Date().toLocaleTimeString();
+            $interval(function () {
+                $scope.myTime = new Date().toLocaleTimeString();
+            }, 1000);
+            // intervalul cand se apeleaza acest servicul automat: 1 secunda
+
+            //$window
+            $scope.DisplayPrompt = function () {
+                var name = $window.prompt('Cum te numesti?');
+
+                $window.alert('Salut ' + name);
+            }
+
+            //$log apar mesajele in consola
+            $log.log('Acesta este un simplul log.');
+            $log.error('Acesta este un log de eroare.');
+            $log.info('Acesta este un log de informare.');
+            $log.warn('Acesta este un log de avertizare.');
+            $log.debug('Acesta este un log de debug.');
+
+            // servicul personalizat
+           
+            $scope.TransformaPrompt = function () {
+                var numar = +$window.prompt('Numarul in baza 10');
+                var hex = hexa.myFunc(numar);
+                $window.alert('Numarul in baza 16 este: ' + hex);
+                $scope.hex = hex;
+            }
+        });
+    </script>
+</body>
+
+</html>

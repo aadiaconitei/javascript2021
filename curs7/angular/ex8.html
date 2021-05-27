@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Filtre</title>
+</head>
+
+<body>
+
+    <div ng-app="myApp" ng-controller="myCtr">
+
+        <p>Numele meu este {{ fName | uppercase }} {{ lName | uppercase }}</p>
+        <p>Prieteni mei din afara tarii:</p>
+        <ul>
+            <li ng-repeat="x in prieteni | orderBy:'country'">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+        <p>De Sf. Ion le trimit SMS:</p>
+        <ul>
+            <li ng-repeat="x in prieteni | filter : 'ion'">
+                <!-- filter poate fi folosit cu array si returneaza elementele care se potrivesc cu  :'expresie' -->
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtr', function ($scope) {
+            $scope.fName = "adrian",
+            $scope.lName = "adiaconitei",
+            $scope.prieteni = [
+                { name: 'Vasile', country: 'Canada' },
+                { name: 'Ionut', country: 'Suedia' },
+                { name: 'Marian', country: 'Italia' },
+                { name: 'Ionel', country: 'Spania' },
+                { name: 'Silviu', country: 'Germania' },
+                { name: 'Bogdan', country: 'SUA' },
+                { name: 'Ion', country: 'Anglia' }
+
+            ];
+        });
+    </script>
+</body>
+
+</html>

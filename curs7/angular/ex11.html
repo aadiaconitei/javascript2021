@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Angular Ajax!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Blog demo</h1>
+
+        </div>
+    </section>
+    <div ng-controller="myCtr" class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div ng-repeat="post in content" class="col-md-4 d-flex align-items-stretch">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <h2>{{post.title }}</h2>
+                            <p class="card-text"> {{ post.body}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+
+
+        app.controller('myCtr', function ($scope, $log, $http) {
+
+            $http.get("http://localhost/javascript/curs7/angular/posts.json")
+                .then(function (response) {
+                    // success
+
+                    $log.info('Acesta este un log de informare.');
+                    $scope.content = response.data;
+                }, function (response) {
+                    // error
+                    $log.error('Acesta este un log de eroare.');
+                    $scope.error = "Ceva este gresit!";
+                });
+
+        });
+
+    </script>
+</body>
+
+</html>

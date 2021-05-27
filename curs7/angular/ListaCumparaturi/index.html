@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .active {
+            color: green;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body style="width:100%; max-width:400px;margin: auto;">
+    <div ng-app="myShoppingList" ng-cloak ng-controller="myCtr" class="w3-card-2 w3-margin">
+        <!-- Directiva ng-cloak împiedică documentul să arate codul AngularJS  neîncărcat.-->
+
+        <header class="w3-container w3-light-grey w3-padding-16">
+            <h3>Lista de cumparaturi</h3>
+        </header>
+        <ul class="w3-ul">
+            <li ng-click="active=!active" ng-repeat="x in products" ng-class="{'active': active}" class="w3-padding-16">
+                {{x}}<span ng-click="removeItem($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
+        </ul>
+        <div class="w3-container w3-light-grey w3-padding-16">
+            <div class="w3-row w3-margin-top">
+                <div class="w3-col s10">
+                    <input placeholder="Adauga produs" ng-model="addMe" class="w3-input w3-border w3-padding">
+                </div>
+                <div class="w3-col s2">
+                    <button ng-click="addItem()" class="w3-btn w3-padding w3-green">Add</button>
+                </div>
+            </div>
+            <p class="w3-text-red">{{errortext}}</p>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+        var app = angular.module("myShoppingList", []);
+        app.controller("myCtr", function ($scope) {
+            $scope.products = ["Lapte", "Paine", "Oua", "Faina"];
+            $scope.addItem = function () {
+                $scope.errortext = "";
+                if (!$scope.addMe) { return; }
+                
+                if ($scope.products.findIndex(item => $scope.addMe.toLowerCase() === item.toLowerCase()) == -1) {
+                    $scope.products.push($scope.addMe);
+                } else {
+                    $scope.errortext = "Ai adaugat deja acest produs";
+                }
+            }
+            $scope.removeItem = function (x) {
+                $scope.errortext = "";
+                $scope.products.splice(x, 1);
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

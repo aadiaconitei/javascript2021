@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Salut</title>
+
+</head>
+<body>
+    Nume: <input type="text" id="txtName" /> <br />
+    Salut <label id="lblName"></label>
+
+   
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#txtName').keyup(function () {
+                $('#lblName').text($('#txtName').val());
+            });
+        });
+    </script>
+</body>
+</html>

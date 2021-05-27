@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <!-- ng-app defineste o aplicatie angular -->
+    <div ng-controller="myCtr">
+        <!-- defineste un controler ce va fi un obiect javascript ce va controla 
+                tot ce se va intampla in acest div
+            -->
+        Introduceti un mesaj: <br>
+        <input type="text" ng-model="message" /> <br>
+        <textarea ng-model="message"></textarea><br>
+        <!-- ng-model leaga/ trimite valoarea variabilei message din HTML catre Angular -->
+        {{ message }}
+        <button ng-click="showMsg(message)">Afiseaza mesajul</button>
+        <!-- este directiva care la click va aplea metoda showMsg a obiectului myCtr -->
+    </div>
+    <div ng-controller="myCtr2">
+        <button ng-click="showMsg()">Afiseaza iar mesajul</button>
+    </div>
+    <!-- directiva definita de utilizator -->
+    <div ng-mydir=""></div>
+
+    
+    <script>
+        var app = angular.module('myApp', []);
+        // directiva definita de utilizator
+        app.directive('ngMydir', function () {
+            return {
+                template: '<div>AngularJS Directiva personalizata</div>'
+            }
+        });
+
+        app.controller('myCtr', function ($scope) {
+            $scope.message = "Sunt un mesaj controlat!";
+
+            $scope.showMsg = function (msg) {
+                alert(msg);
+            };
+        });
+        app.controller('myCtr2', function ($scope) {
+           
+
+            $scope.showMsg = function () {
+                alert(1234);
+            };
+        });
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body ng-app>
+     <!-- ng-app defineste o aplicatie angular -->
+    <div ng-init="myName='Ion'">
+        <!-- ng-init seteaza variabila myname cu Ion -->
+        <p>Initial numele este <span ng-bind="myName"></span></p>
+    </div>
+   
+    Nume: <input type="text" ng-model="name" /> <br />
+    <!-- ng-model leaga/ trimite valoarea variabilei name din HTML catre Angular -->
+    Salut <label ng-bind="name"></label> <br>
+    <!-- ng-bind leaga valoarea variabilei  name din Angular  in  HTML -->
+
+    Salut {{ name }}
+    <p>Suma 5+5: {{ 5 + 5 }}</p>
+    <!-- expresiile / variabilele se afiseaza cu {{ }} -->
+
+</body>
+
+</html>
