@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+myVar = "globala"; // Declarare  globala 
+ function check() {
+   var myVar = "locala";  // Declarare  locala 
+   document.writeln("variabila locala:" + myVar);
+}
+</script>
+</head>
+
+<body>
+<p>Si acum variabilele</p>
+<script type="text/javascript">
+
+document.write("variabila globala:" + myVar + "<br />");
+check();
+</script>
+</body>
+</html>

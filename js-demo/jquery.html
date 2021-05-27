@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Untitled Document</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+			border-radius: 2px;
+			background-color: #FF9966;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#paragraf').click(function () {
+				$('#paragraf').hide();
+				$('div').fadeTo('slow', 0.5);
+			});
+			$('div').click(function () {
+				$('div').fadeTo('slow', 1);
+				$('#paragraf').show();
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div></div>
+	<p id="paragraf"> Un paragraf </p>
+
+
+</body>
+
+</html>
