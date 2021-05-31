@@ -1,0 +1,19 @@
+{
+  "name": "MyDEMOANM",
+  "version": "1.0.0",
+  "description": "CRUD MyDEMO AngularJs+Node.js+MySQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AA",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "nodeman": "^1.1.2",
+    "nodemon": "^1.18.9"
+  }
+}

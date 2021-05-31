@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h4>Adauga utilizator</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 bg-light p-3 shadow-sm">
+            <form  name="myForm" novalidate>
+                <div class="form-group">
+                    <label>Nume</label>
+                    <input type="text" name="nume" ng-model="nume" class="form-control" required>
+                    <span style="color:red" ng-show="myForm.nume.$dirty && myForm.nume.$invalid">
+                        <span ng-show="myForm.nume.$error.required">Numele este obligatoriu!</span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label>Prenume</label>
+                    <input type="text" name="prenume" ng-model="prenume" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Email </label>
+                    <input type="email" name="email" ng-model="email" class="form-control" required validate-email-remotely>
+                    <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                        <span ng-show="myForm.email.$error.required">Email este obligatoriu!.</span>
+                        <span ng-show="myForm.email.$error.email">Email invalid!.</span>
+                        <span ng-show="myForm.email.$error.validEmail">
+                            Adresa de email este deja in baza de date!
+                         </span>
+                        
+                    </span>
+                   
+                </div>
+                <div class="form-group">
+                    <label>Parola</label>
+                    <input type="password" name="parola" ng-model="parola" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button ng-disabled="myForm.$invalid" class="btn btn-success" ng-click="add()">Adauga</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

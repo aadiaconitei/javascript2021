@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <div class="row" ng-show="display">
+        <div class="col-md-12 text-center">
+            <h4>Lista utilizatori</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div ng-show="display">
+                <table class="table">
+                    <tr>
+                        <th>id</th>
+                        <th>Prenume</th>
+                        <th>Nume</th>
+                        <th>Email</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="x in data">
+                        <td>{{x.id}}</td>
+                        <td>{{x.prenume}}</td>
+                        <td>{{x.nume}}</td>
+                        <td>{{x.email}}</td>
+                        <td><a href="#!" ng-click="remove(x.id)" class="btn btn-danger btn-sm"> <i class="far fa-trash-alt"></i> </a></td>
+                        <td><a href="#!/update/{{x.id}}" class="btn btn-success btn-sm"> <i class="far fa-edit"></i> </a></td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-show="!display">
+                <div class="alert alert-danger" role="alert">
+                    Nu sunt utilizatori! Adauga utilizatori!
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
