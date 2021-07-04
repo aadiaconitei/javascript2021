@@ -1,0 +1,56 @@
+<div class="container">
+
+
+<h1>Administrarea studentilor</h1>
+
+
+<div class="container mb-4">
+    <form #f = "ngForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nume</label>
+          <input [(ngModel)] = "selectedStudent.nume"  name="nume" type="text" class="form-control" id="nume" aria-describedby="numeHealp">
+          <small id="numeHealp" class="form-text text-muted">Numele completat corect</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Prenume</label>
+            <input [(ngModel)] = "selectedStudent.prenume" name="prenume" type="text" class="form-control" id="prenume" aria-describedby="prenumeHealp">
+            <small id="prenumeHealp" class="form-text text-muted">Prenumele completat corect</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">An</label>
+            <input [(ngModel)] = "selectedStudent.an" name="an" type="text" class="form-control" id="an" aria-describedby="anHealp">
+            <small id="anHealp" class="form-text text-muted">Anul de studiu:1,2,3</small>
+          </div>
+          <input [(ngModel)] = "selectedStudent.id" name="id" type="hidden" class="form-control" id="id" >
+           
+        
+        
+        <button (click)="createOrUpdateStudent(f)" type="submit" class="btn btn-primary">Create or Update Student</button>
+      </form>
+      
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nume</th>
+        <th scope="col">Prenume</th>
+        <th scope="col">An</th>
+        <th scope="col">Operatii</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students" [attr.id]="student.id">
+            <td>{{ student.id }}</td>
+            <td>{{ student.nume }}</td>
+            <td>{{ student.prenume }}</td>
+            <td>{{ student.an }}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="deleteStudent(student.id)">Delete</button>
+              <button type="button" class="btn btn-danger" (click)="selectStudent(student)">Update</button>
+            </td>
+          </tr>
+    </tbody>
+  </table>
+</div>

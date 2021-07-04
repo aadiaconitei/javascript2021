@@ -1,0 +1,43 @@
+https://therichpost.com/angular-9-php-mysql-crud-part-1/
+https://therichpost.com/angular-9-php-mysql-database-crud-part-2-add-user/
+
+
+node -v
+-update
+npm cache clean -f
+sudo npm install -g n
+sudo n stable
+node -v
+npm -v
+git --version
+ng --version
+-update
+sudo npm uninstall -g angular-cli
+sudo npm uninstall --save-dev angular-cli
+sudo npm cache verify
+sudo npm cache clean
+sudo npm install -g @angular/cli@latest
+ng update @angular/core @angular/cli
+
+
+ng new angular-demo
+sau ng init  dar facem noi folderul angular-app 
+pornim aplicatie
+cd angular-app
+ng serve 
+sau ng serve --open  
+sau npm start   // comanda din sectiunea scripts in fisierul package.json.
+http://localhost:4200/
+
+ng build –prod 
+
+http://localhost/javascript/curs9/angular-app/dist/angular-app/
+
+
+// componente 
+ng g component home
+sau ng g c test --flat  // --flat nu mia face folder
+
+//servicii
+
+ng g s alerta

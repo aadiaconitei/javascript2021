@@ -8,3 +8,5 @@
 - https://w3techs.com/technologies/comparison/ws-apache,ws-nginx,ws-nodejs
 - https://db-engines.com/en/ranking/relational+dbms
 - https://mikkegoes.com/javascript-projects-for-beginners/
+
+-  https://javascript.info/

@@ -1,0 +1,21 @@
+<h1>Prima mea comonenta!</h1>
+<p>home works!</p>
+<h2>{{ titlulHome }}</h2>
+<p [style.color]='color'>{{ descriere }}</p>
+<p>{{ 1+1 }} </p>
+<p>{{ heroes[0].name }}</p>
+<img [src]='image' alt="{{ heroes[0].name }} ">
+
+<img  *ngIf ='showImage' [src]='image' [alt]='alt'>
+
+<button (click) = 'afiseazaImagine()'> Afiseaza/Ascunde Imagine</button>
+
+<input type="text" [(ngModel)]="nume">
+<br>
+{{ nume }}
+
+<ul>
+    <li *ngFor='let  hero of heroes; let i = index'>
+        {{ i }} {{ hero.name}}
+    </li>
+</ul>
