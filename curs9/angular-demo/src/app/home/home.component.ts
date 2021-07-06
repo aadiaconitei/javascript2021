@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertaService } from '../alerta.service';
 const HEROES = [
   { id: 1, name: 'Superman' },
   { id: 2, name: 'Batman' },
@@ -20,13 +21,18 @@ export class HomeComponent implements OnInit {
   showImage = false;
   nume = 'Ion';
   image = 'https://upload.wikimedia.org/wikipedia/en/3/35/Supermanflying.png'; // [src]
-  constructor() { }
+  
+  constructor(private alertaService: AlertaService) { }
 
   ngOnInit(): void {
+    this.salut('Mihai');
   }
 
   afiseazaImagine(){
     this.showImage = !this.showImage;
   }
+  salut(salut){
+    this.alertaService.showAlert(salut);
+  } 
 
 }

@@ -41,3 +41,7 @@ sau ng g c test --flat  // --flat nu mia face folder
 //servicii
 
 ng g s alerta
+apoi declarat in app.module.ts
+providers: [
+    AlertaService
+  ],
