@@ -76,7 +76,7 @@ const routes: Routes = [
 
 # 15. Optional: Instalam  bootstrap 4
 ```
-npm install bootstrap --save
+npm install bootstrap@v4.3.1 --save
 npm install jquery --save
 npm install popper.js --save
 ```
