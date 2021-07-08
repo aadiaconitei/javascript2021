@@ -9,11 +9,14 @@ import { ApiService } from '../api.service';
 })
 export class AdminComponent implements OnInit {
   students: Student[];
-  selectedStudent: Student  = { id : null, nume: null, prenume: null, an: null};
+  selectedStudent: Student = { id: null, nume: null, prenume: null, an: null };
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    this.readStudents();
+  }
+  readStudents() {
     // read
     this.apiService.readStudents().subscribe((students: Student[]) => {
       this.students = students;
@@ -21,33 +24,30 @@ export class AdminComponent implements OnInit {
     });
   }
 
-
-  createOrUpdateStudent(form){
-    if ( this.selectedStudent && this.selectedStudent.id ) {
+  createOrUpdateStudent(form) {
+    if (this.selectedStudent && this.selectedStudent.id) {
       this.apiService.updateStudent(form.value).subscribe((student: Student) => {
-        console.log('Student updated' , student);
+        console.log('Student updated', student);
       });
     }
-    else{
-
+    else {
       this.apiService.createStudent(form.value).subscribe((student: Student) => {
+        this.readStudents();
         console.log('Student created, ', student);
       });
     }
 
   }
 
-  selectStudent(student: Student){
+  selectStudent(student: Student) {
     this.selectedStudent = student;
   }
 
-
-  
-  deleteStudent(id){
+  deleteStudent(id) {
     this.apiService.deleteStudent(id).subscribe((student: Student) => {
-      console.log('Student deleted, ', student);
-      const index = this.students.indexOf(student);
-      this.students.splice(index, 1);
+      this.readStudents();
+      // const index = this.students.indexOf(student);
+      // this.students.splice(index, 1);
     });
   }
 
